@@ -168,7 +168,7 @@
             this.groupBox1_basic.Controls.Add(this.btn_CE);
             this.groupBox1_basic.Controls.Add(this.btn_c);
             this.groupBox1_basic.Font = new System.Drawing.Font("宋体", 10F);
-            this.groupBox1_basic.Location = new System.Drawing.Point(58, 279);
+            this.groupBox1_basic.Location = new System.Drawing.Point(69, 286);
             this.groupBox1_basic.Name = "groupBox1_basic";
             this.groupBox1_basic.Size = new System.Drawing.Size(582, 636);
             this.groupBox1_basic.TabIndex = 2;
@@ -421,7 +421,7 @@
             this.groupBox1_function.Controls.Add(this.btn_取余数);
             this.groupBox1_function.Controls.Add(this.btn_阶乘);
             this.groupBox1_function.Font = new System.Drawing.Font("宋体", 10F);
-            this.groupBox1_function.Location = new System.Drawing.Point(58, 125);
+            this.groupBox1_function.Location = new System.Drawing.Point(69, 132);
             this.groupBox1_function.Name = "groupBox1_function";
             this.groupBox1_function.Size = new System.Drawing.Size(582, 148);
             this.groupBox1_function.TabIndex = 6;
@@ -488,7 +488,7 @@
             // 
             this.listBox1_记忆.FormattingEnabled = true;
             this.listBox1_记忆.ItemHeight = 12;
-            this.listBox1_记忆.Location = new System.Drawing.Point(674, 112);
+            this.listBox1_记忆.Location = new System.Drawing.Point(685, 119);
             this.listBox1_记忆.Name = "listBox1_记忆";
             this.listBox1_记忆.Size = new System.Drawing.Size(243, 796);
             this.listBox1_记忆.TabIndex = 7;
@@ -510,7 +510,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBox2_步骤显示);
             this.groupBox1.Controls.Add(this.textBox1_结果显示);
-            this.groupBox1.Location = new System.Drawing.Point(58, 13);
+            this.groupBox1.Location = new System.Drawing.Point(69, 20);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(582, 113);
             this.groupBox1.TabIndex = 11;
@@ -520,7 +520,7 @@
             // textBox3_记忆显示
             // 
             this.textBox3_记忆显示.Font = new System.Drawing.Font("宋体", 30F);
-            this.textBox3_记忆显示.Location = new System.Drawing.Point(674, 24);
+            this.textBox3_记忆显示.Location = new System.Drawing.Point(685, 31);
             this.textBox3_记忆显示.Name = "textBox3_记忆显示";
             this.textBox3_记忆显示.ReadOnly = true;
             this.textBox3_记忆显示.Size = new System.Drawing.Size(243, 53);
