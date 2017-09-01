@@ -350,6 +350,22 @@ namespace Calculator
                 isEXP = true;
             }
         }
+
+        private void explainationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
+            this.Enabled = true;
+        }
+
+        private void binaryConvertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            binaryConvert f3 = new binaryConvert();
+            f3.ShowDialog();
+            this.Enabled = true;
+        }
     }
 
     public class memory : Object

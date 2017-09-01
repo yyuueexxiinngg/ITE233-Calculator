@@ -66,9 +66,14 @@
             this.textBox2_步骤显示 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox3_记忆显示 = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.explainationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.binaryConvertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1_basic.SuspendLayout();
             this.groupBox1_function.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1_结果显示
@@ -168,7 +173,7 @@
             this.groupBox1_basic.Controls.Add(this.btn_CE);
             this.groupBox1_basic.Controls.Add(this.btn_c);
             this.groupBox1_basic.Font = new System.Drawing.Font("宋体", 10F);
-            this.groupBox1_basic.Location = new System.Drawing.Point(69, 286);
+            this.groupBox1_basic.Location = new System.Drawing.Point(69, 322);
             this.groupBox1_basic.Name = "groupBox1_basic";
             this.groupBox1_basic.Size = new System.Drawing.Size(582, 636);
             this.groupBox1_basic.TabIndex = 2;
@@ -421,7 +426,7 @@
             this.groupBox1_function.Controls.Add(this.btn_取余数);
             this.groupBox1_function.Controls.Add(this.btn_阶乘);
             this.groupBox1_function.Font = new System.Drawing.Font("宋体", 10F);
-            this.groupBox1_function.Location = new System.Drawing.Point(69, 132);
+            this.groupBox1_function.Location = new System.Drawing.Point(69, 168);
             this.groupBox1_function.Name = "groupBox1_function";
             this.groupBox1_function.Size = new System.Drawing.Size(582, 148);
             this.groupBox1_function.TabIndex = 6;
@@ -488,7 +493,7 @@
             // 
             this.listBox1_记忆.FormattingEnabled = true;
             this.listBox1_记忆.ItemHeight = 12;
-            this.listBox1_记忆.Location = new System.Drawing.Point(685, 119);
+            this.listBox1_记忆.Location = new System.Drawing.Point(685, 155);
             this.listBox1_记忆.Name = "listBox1_记忆";
             this.listBox1_记忆.Size = new System.Drawing.Size(243, 796);
             this.listBox1_记忆.TabIndex = 7;
@@ -510,7 +515,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBox2_步骤显示);
             this.groupBox1.Controls.Add(this.textBox1_结果显示);
-            this.groupBox1.Location = new System.Drawing.Point(69, 20);
+            this.groupBox1.Location = new System.Drawing.Point(69, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(582, 113);
             this.groupBox1.TabIndex = 11;
@@ -520,11 +525,44 @@
             // textBox3_记忆显示
             // 
             this.textBox3_记忆显示.Font = new System.Drawing.Font("宋体", 30F);
-            this.textBox3_记忆显示.Location = new System.Drawing.Point(685, 31);
+            this.textBox3_记忆显示.Location = new System.Drawing.Point(685, 67);
             this.textBox3_记忆显示.Name = "textBox3_记忆显示";
             this.textBox3_记忆显示.ReadOnly = true;
             this.textBox3_记忆显示.Size = new System.Drawing.Size(243, 53);
             this.textBox3_记忆显示.TabIndex = 8;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(940, 25);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.explainationToolStripMenuItem,
+            this.binaryConvertToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // explainationToolStripMenuItem
+            // 
+            this.explainationToolStripMenuItem.Name = "explainationToolStripMenuItem";
+            this.explainationToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.explainationToolStripMenuItem.Text = "Explaination";
+            this.explainationToolStripMenuItem.Click += new System.EventHandler(this.explainationToolStripMenuItem_Click);
+            // 
+            // binaryConvertToolStripMenuItem
+            // 
+            this.binaryConvertToolStripMenuItem.Name = "binaryConvertToolStripMenuItem";
+            this.binaryConvertToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.binaryConvertToolStripMenuItem.Text = "Binary Convert";
+            this.binaryConvertToolStripMenuItem.Click += new System.EventHandler(this.binaryConvertToolStripMenuItem_Click);
             // 
             // Calculator
             // 
@@ -536,6 +574,8 @@
             this.Controls.Add(this.listBox1_记忆);
             this.Controls.Add(this.groupBox1_function);
             this.Controls.Add(this.groupBox1_basic);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(16, 50);
             this.Name = "Calculator";
             this.Text = "Calculator";
@@ -545,6 +585,8 @@
             this.groupBox1_function.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,6 +632,10 @@
         private System.Windows.Forms.TextBox textBox2_步骤显示;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox3_记忆显示;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem explainationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem binaryConvertToolStripMenuItem;
     }
 }
 
