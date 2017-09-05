@@ -87,7 +87,6 @@
             this.textBox1_结果显示.Size = new System.Drawing.Size(566, 54);
             this.textBox1_结果显示.TabIndex = 0;
             this.textBox1_结果显示.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox1_结果显示.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_结果显示_KeyPress);
             // 
             // btn_科学计数
             // 
@@ -99,7 +98,7 @@
             this.btn_科学计数.Tag = ".exp+";
             this.btn_科学计数.Text = "Exp";
             this.btn_科学计数.UseVisualStyleBackColor = true;
-            this.btn_科学计数.Click += new System.EventHandler(this.btn_科学计数_Click);
+            this.btn_科学计数.Click += new System.EventHandler(this.btn_one_time_Click);
             // 
             // btn_取余数
             // 
@@ -120,9 +119,10 @@
             this.btn_阶乘.Name = "btn_阶乘";
             this.btn_阶乘.Size = new System.Drawing.Size(97, 49);
             this.btn_阶乘.TabIndex = 4;
+            this.btn_阶乘.Tag = "^";
             this.btn_阶乘.Text = "n!";
             this.btn_阶乘.UseVisualStyleBackColor = true;
-            this.btn_阶乘.Click += new System.EventHandler(this.btn_阶乘_Click);
+            this.btn_阶乘.Click += new System.EventHandler(this.btn_one_time_Click);
             // 
             // btn_CE
             // 
@@ -187,9 +187,10 @@
             this.btn_mm.Name = "btn_mm";
             this.btn_mm.Size = new System.Drawing.Size(85, 111);
             this.btn_mm.TabIndex = 28;
+            this.btn_mm.Tag = "m";
             this.btn_mm.Text = "M-";
             this.btn_mm.UseVisualStyleBackColor = true;
-            this.btn_mm.Click += new System.EventHandler(this.btn_mm_Click);
+            this.btn_mm.Click += new System.EventHandler(this.btn_memory_Click);
             // 
             // btn_mp
             // 
@@ -198,9 +199,10 @@
             this.btn_mp.Name = "btn_mp";
             this.btn_mp.Size = new System.Drawing.Size(85, 111);
             this.btn_mp.TabIndex = 27;
+            this.btn_mp.Tag = "p";
             this.btn_mp.Text = "M+";
             this.btn_mp.UseVisualStyleBackColor = true;
-            this.btn_mp.Click += new System.EventHandler(this.btn_mp_Click);
+            this.btn_mp.Click += new System.EventHandler(this.btn_memory_Click);
             // 
             // btn_mc
             // 
@@ -209,9 +211,10 @@
             this.btn_mc.Name = "btn_mc";
             this.btn_mc.Size = new System.Drawing.Size(85, 111);
             this.btn_mc.TabIndex = 26;
+            this.btn_mc.Tag = "c";
             this.btn_mc.Text = "MC";
             this.btn_mc.UseVisualStyleBackColor = true;
-            this.btn_mc.Click += new System.EventHandler(this.btn_mc_Click);
+            this.btn_mc.Click += new System.EventHandler(this.btn_memory_Click);
             // 
             // btn_小数点
             // 
@@ -242,9 +245,10 @@
             this.btn_正负.Name = "btn_正负";
             this.btn_正负.Size = new System.Drawing.Size(85, 85);
             this.btn_正负.TabIndex = 23;
+            this.btn_正负.Tag = "-";
             this.btn_正负.Text = "±";
             this.btn_正负.UseVisualStyleBackColor = true;
-            this.btn_正负.Click += new System.EventHandler(this.btn_正负_Click);
+            this.btn_正负.Click += new System.EventHandler(this.btn_one_time_Click);
             // 
             // btn_等于
             // 
@@ -452,9 +456,10 @@
             this.btn_倒数.Name = "btn_倒数";
             this.btn_倒数.Size = new System.Drawing.Size(97, 49);
             this.btn_倒数.TabIndex = 8;
+            this.btn_倒数.Tag = "/";
             this.btn_倒数.Text = "1/x";
             this.btn_倒数.UseVisualStyleBackColor = true;
-            this.btn_倒数.Click += new System.EventHandler(this.btn_倒数_Click);
+            this.btn_倒数.Click += new System.EventHandler(this.btn_one_time_Click);
             // 
             // btn_十指数
             // 
@@ -463,9 +468,10 @@
             this.btn_十指数.Name = "btn_十指数";
             this.btn_十指数.Size = new System.Drawing.Size(97, 49);
             this.btn_十指数.TabIndex = 7;
+            this.btn_十指数.Tag = "10";
             this.btn_十指数.Text = "10ⁿ";
             this.btn_十指数.UseVisualStyleBackColor = true;
-            this.btn_十指数.Click += new System.EventHandler(this.btn_十指数_Click);
+            this.btn_十指数.Click += new System.EventHandler(this.btn_one_time_Click);
             // 
             // btn_立方
             // 
@@ -474,9 +480,10 @@
             this.btn_立方.Name = "btn_立方";
             this.btn_立方.Size = new System.Drawing.Size(97, 49);
             this.btn_立方.TabIndex = 6;
+            this.btn_立方.Tag = "3";
             this.btn_立方.Text = "X³";
             this.btn_立方.UseVisualStyleBackColor = true;
-            this.btn_立方.Click += new System.EventHandler(this.btn_立方_Click);
+            this.btn_立方.Click += new System.EventHandler(this.btn_one_time_Click);
             // 
             // btn_平方
             // 
@@ -485,9 +492,10 @@
             this.btn_平方.Name = "btn_平方";
             this.btn_平方.Size = new System.Drawing.Size(97, 49);
             this.btn_平方.TabIndex = 5;
+            this.btn_平方.Tag = "2";
             this.btn_平方.Text = "X²";
             this.btn_平方.UseVisualStyleBackColor = true;
-            this.btn_平方.Click += new System.EventHandler(this.btn_平方_Click);
+            this.btn_平方.Click += new System.EventHandler(this.btn_one_time_Click);
             // 
             // listBox1_记忆
             // 
@@ -579,8 +587,6 @@
             this.MinimumSize = new System.Drawing.Size(16, 50);
             this.Name = "Calculator";
             this.Text = "Calculator";
-            this.Load += new System.EventHandler(this.Calculator_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Calculator_KeyPress);
             this.groupBox1_basic.ResumeLayout(false);
             this.groupBox1_function.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

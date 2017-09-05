@@ -65,11 +65,6 @@ namespace Calculator
         }
 
 
-        private void textBox1_结果显示_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void Symbol_Btn_Click(object sender, EventArgs e)
         {
             String now_action = (sender as Button).Tag.ToString();
@@ -126,10 +121,6 @@ namespace Calculator
 
             }
             
-        }
-
-        private void Calculator_KeyPress(object sender, KeyPressEventArgs e)
-        {
         }
 
 
@@ -206,55 +197,69 @@ namespace Calculator
             isEXP = false;
         }
 
-        private void btn_平方_Click(object sender, EventArgs e)
+        private void btn_one_time_Click(object sender, EventArgs e)
         {
-            if (textBox1_结果显示.Text != "")
-            {
-                double var = double.Parse(textBox1_结果显示.Text);
-            textBox1_结果显示.Text = (var * var).ToString();
-            isCalculated = true;
-                }
-        }
+            string one_time_action = (sender as Button).Tag.ToString();
 
-        private void btn_立方_Click(object sender, EventArgs e)
-        {
             if (textBox1_结果显示.Text != "")
             {
-                double var = double.Parse(textBox1_结果显示.Text);
-                textBox1_结果显示.Text = (var * var * var).ToString();
-                isCalculated = true;
-            }
-        }
-
-        private void btn_十指数_Click(object sender, EventArgs e)
-        {
-            if (textBox1_结果显示.Text != "")
-            {
-                double var = double.Parse(textBox1_结果显示.Text);
                 double _result = 10;
-                _result = Math.Pow(_result, var);
+                double var = double.Parse(textBox1_结果显示.Text);
+
+                switch (one_time_action)
+                {
+                    case "2":
+                        _result = var * var;
+                        break;
+                    case "3":
+                        _result = var * var * var;
+                        break;
+                    case "10":
+                        _result = Math.Pow(_result, var);
+                        break;
+                    case "/":
+                        if (var == 0)
+                        {
+                            MessageBox.Show("0 can not be denominator");
+                            btn_c_Click(sender, e);
+                            return;
+                        }
+                        else
+                        {
+                            _result = 1 / var;
+                        }
+                        break;
+                    case "-":
+                        _result = -var;
+                        break;
+                    case ".exp+":
+                        last_var = double.Parse(textBox1_结果显示.Text);
+                        textBox1_结果显示.Text = "";
+                        isEXP = true;
+                        return;
+                    case "^":
+                        if (var >= 0)
+                        {
+                            for (int i = 1; i <= var; i++)
+                            {
+                                _result *= i;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid input");
+                            btn_c_Click(sender, e);
+                            return;
+                        }
+                        break;
+
+                }
                 textBox1_结果显示.Text = _result.ToString();
                 isCalculated = true;
             }
         }
 
-        private void btn_倒数_Click(object sender, EventArgs e)
-        {
-            if (textBox1_结果显示.Text != "")
-            {
-                double var = double.Parse(textBox1_结果显示.Text);
-                if (var == 0)
-                {
-                    MessageBox.Show("0 can not be denominator");
-                    btn_c_Click(sender, e);
-                }
-                else
-                {
-                    textBox1_结果显示.Text = (1 / var).ToString();
-                    isCalculated = true;
-                }
-            }
-        }
+
 
         private void btn_back_Click(object sender, EventArgs e)
         {
@@ -264,65 +269,35 @@ namespace Calculator
             }
         }
 
-        private void btn_正负_Click(object sender, EventArgs e)
-        {
-            if (textBox1_结果显示.Text != "")
-            {
-                double var = double.Parse(textBox1_结果显示.Text);
-                textBox1_结果显示.Text = (-var).ToString();
-            }
-        }
-
-        private void btn_阶乘_Click(object sender, EventArgs e)
-        {
-            if (textBox1_结果显示.Text != "")
-            {
-                double var = double.Parse(textBox1_结果显示.Text);
-                double _result = 1;
-                if (var >= 0)
-                {
-                    for (int i = 1; i <= var; i++)
-                    {
-                        _result *= i;
-                    }
-                    textBox1_结果显示.Text = _result.ToString();
-                    isCalculated = true;
-                }
-                else
-                {
-                    MessageBox.Show("Invalid input");
-                    btn_c_Click(sender, e);
-                }
-            }
-        }
 
         private void Calculator_Load(object sender, EventArgs e)
         {
         }
 
-        private void btn_mp_Click(object sender, EventArgs e)
+        private void btn_memory_Click(object sender,EventArgs e)
         {
+            string function = (sender as Button).Tag.ToString();
+
             if (textBox1_结果显示.Text != "")
             {
-                m_var += double.Parse(textBox1_结果显示.Text);
+                switch (function)
+                {
+                    case "m":
+                        m_var -= double.Parse(textBox1_结果显示.Text);
+                        break;
+                    case "p":
+                        m_var += double.Parse(textBox1_结果显示.Text);
+                        break;
+                    case "c":
+                        m_var = 0;
+                        textBox3_记忆显示.Text = "";
+                        return;
+                }
                 textBox3_记忆显示.Text = m_var.ToString();
             }
-        }
 
-        private void btn_mm_Click(object sender, EventArgs e)
-        {
-            if (textBox1_结果显示.Text != "")
-            {
-                m_var -= double.Parse(textBox1_结果显示.Text);
-                textBox3_记忆显示.Text = m_var.ToString();
-            }
-        }
+         }
 
-        private void btn_mc_Click(object sender, EventArgs e)
-        {
-            m_var = 0;
-            textBox3_记忆显示.Text = "";
-        }
 
         private void listBox1_记忆_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -341,16 +316,7 @@ namespace Calculator
 
         }
 
-        private void btn_科学计数_Click(object sender, EventArgs e)
-        {
-            if (textBox1_结果显示.Text != "")
-            {
-                last_var = double.Parse(textBox1_结果显示.Text);
-                textBox1_结果显示.Text = "";
-                isEXP = true;
-            }
-        }
-
+   
         private void explainationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
