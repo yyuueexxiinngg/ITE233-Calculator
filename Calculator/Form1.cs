@@ -24,8 +24,6 @@ namespace Calculator
 
         private double calculate(double last_var,double current_var,String action)
         {
-        
-            
             double result = 0;
             switch (action)
             {
@@ -64,14 +62,12 @@ namespace Calculator
             }
         }
 
-
         private void Symbol_Btn_Click(object sender, EventArgs e)
         {
             String now_action = (sender as Button).Tag.ToString();
             double result;
             if (textBox1_结果显示.Text != ""){
                 string str = textBox1_结果显示.Text;
-
                 if (isEXP)
                 {
                     textBox1_结果显示.Text = calculate(last_var, double.Parse(str), "e").ToString("F");
@@ -91,9 +87,7 @@ namespace Calculator
                     clicked = true;
                     canCalculate = false;
                     if (!isFromMemory)
-                    {
                         textBox2_步骤显示.Text += last_var + _operator;
-                    }
                     else
                     {
                         textBox2_步骤显示.Text += _operator;
@@ -109,18 +103,14 @@ namespace Calculator
                     _operator = now_action;
                     canCalculate = false;
                     isCalculated = true;
-
                 }
                 else if (textBox2_步骤显示.Text != "")
                 {
                     _operator = now_action;
                     textBox2_步骤显示.Text = textBox2_步骤显示.Text.Remove(textBox2_步骤显示.Text.Length - 1);
                     textBox2_步骤显示.Text += _operator;
-
                 }
-
             }
-            
         }
 
 
@@ -133,19 +123,14 @@ namespace Calculator
                 isCalculated = false;
             }
             if (clicked)
-            {
                 canCalculate = true;
-            }
             textBox1_结果显示.Text += num;
         }
-        
 
         private void btn_小数点_Click(object sender, EventArgs e)
         {
             if((textBox1_结果显示.Text.IndexOf(".") == -1 && textBox2_步骤显示.Text.IndexOf("exp") == -1) && !isEXP)
-            {
                 textBox1_结果显示.Text += ".";
-            }
         }
 
         private void btn_等于_Click(object sender, EventArgs e)
@@ -158,22 +143,15 @@ namespace Calculator
                     textBox1_结果显示.Text = calculate(last_var, double.Parse(str), _operator).ToString();
                     textBox2_步骤显示.Text += str;
                 }else if (isEXP)
-                {
                     textBox1_结果显示.Text = calculate(last_var, double.Parse(str), "e").ToString("F");
-                }
                 clicked = false;
                 isCalculated = true;
                 if (textBox2_步骤显示.Text != "")
-                {
                     m.expression = textBox2_步骤显示.Text;
-                }else if(isEXP)
-                {
+                else if(isEXP)
                     m.expression = last_var.ToString() +".exp+" + str;
-                }
                 else
-                {
                     m.expression = textBox1_结果显示.Text;
-                }
                 m.result = double.Parse(textBox1_结果显示.Text);
                 listBox1_记忆.Items.Insert(0, new memory(m.expression, m.result));
                 textBox2_步骤显示.Text = "";
@@ -184,7 +162,6 @@ namespace Calculator
         {
             textBox1_结果显示.Text = "";
         }
-
 
         private void btn_c_Click(object sender, EventArgs e)
         {
@@ -225,9 +202,7 @@ namespace Calculator
                             return;
                         }
                         else
-                        {
                             _result = 1 / var;
-                        }
                         break;
                     case "-":
                         _result = -var;
@@ -259,8 +234,6 @@ namespace Calculator
             }
         }
 
-
-
         private void btn_back_Click(object sender, EventArgs e)
         {
             if (textBox1_结果显示.Text.Length > 0)
@@ -269,15 +242,9 @@ namespace Calculator
             }
         }
 
-
-        private void Calculator_Load(object sender, EventArgs e)
-        {
-        }
-
         private void btn_memory_Click(object sender,EventArgs e)
         {
             string function = (sender as Button).Tag.ToString();
-
             if (textBox1_结果显示.Text != "")
             {
                 switch (function)
@@ -295,9 +262,7 @@ namespace Calculator
                 }
                 textBox3_记忆显示.Text = m_var.ToString();
             }
-
-         }
-
+        }
 
         private void listBox1_记忆_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -310,13 +275,9 @@ namespace Calculator
                 clicked = false;
                 canCalculate = true;
                 isFromMemory = true;
-
             }
-
-
         }
 
-   
         private void explainationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
