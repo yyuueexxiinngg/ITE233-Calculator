@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Calculator
 {
-    
+
     public partial class Calculator : Form
     {
         double last_var = 0;
@@ -14,15 +14,14 @@ namespace Calculator
         bool isFromMemory = false;
         bool isEXP = false;
         double m_var = 0;
-        memory m = new memory("",0);
+        memory m = new memory("", 0);
 
         public Calculator()
         {
             InitializeComponent();
         }
 
-
-        private double calculate(double last_var,double current_var,String action)
+        private double calculate(double last_var, double current_var, String action)
         {
             double result = 0;
             switch (action)
@@ -37,10 +36,10 @@ namespace Calculator
                     result = last_var * current_var;
                     return result;
                 case "/":
-                    if(current_var != 0)
+                    if (current_var != 0)
                     {
-                    result = last_var / current_var ;
-                    return result;
+                        result = last_var / current_var;
+                        return result;
                     }
                     else
                     {
@@ -66,7 +65,8 @@ namespace Calculator
         {
             String now_action = (sender as Button).Tag.ToString();
             double result;
-            if (textBox1_结果显示.Text != ""){
+            if (textBox1_结果显示.Text != "")
+            {
                 string str = textBox1_结果显示.Text;
                 if (isEXP)
                 {
@@ -79,7 +79,7 @@ namespace Calculator
                     clicked = true;
                     canCalculate = false;
                 }
-                 if (!clicked)
+                if (!clicked)
                 {
                     last_var = double.Parse(textBox1_结果显示.Text);
                     _operator = now_action;
@@ -96,7 +96,10 @@ namespace Calculator
                 }
                 else if (canCalculate)
                 {
-                    result = calculate(last_var, double.Parse(textBox1_结果显示.Text), _operator);
+                    if (now_action.Equals("@"))
+                        result = calculate(last_var, last_var * 0.01 * double.Parse(textBox1_结果显示.Text), _operator);
+                    else
+                        result = calculate(last_var, double.Parse(textBox1_结果显示.Text), _operator);
                     textBox2_步骤显示.Text += textBox1_结果显示.Text + now_action;
                     textBox1_结果显示.Text = result.ToString();
                     last_var = double.Parse(textBox1_结果显示.Text);
@@ -129,7 +132,7 @@ namespace Calculator
 
         private void btn_小数点_Click(object sender, EventArgs e)
         {
-            if((textBox1_结果显示.Text.IndexOf(".") == -1 && textBox2_步骤显示.Text.IndexOf("exp") == -1) && !isEXP)
+            if ((textBox1_结果显示.Text.IndexOf(".") == -1 && textBox2_步骤显示.Text.IndexOf("exp") == -1) && !isEXP)
                 textBox1_结果显示.Text += ".";
         }
 
@@ -142,14 +145,15 @@ namespace Calculator
                 {
                     textBox1_结果显示.Text = calculate(last_var, double.Parse(str), _operator).ToString();
                     textBox2_步骤显示.Text += str;
-                }else if (isEXP)
+                }
+                else if (isEXP)
                     textBox1_结果显示.Text = calculate(last_var, double.Parse(str), "e").ToString("F");
                 clicked = false;
                 isCalculated = true;
                 if (textBox2_步骤显示.Text != "")
                     m.expression = textBox2_步骤显示.Text;
-                else if(isEXP)
-                    m.expression = last_var.ToString() +".exp+" + str;
+                else if (isEXP)
+                    m.expression = last_var.ToString() + ".exp+" + str;
                 else
                     m.expression = textBox1_结果显示.Text;
                 m.result = double.Parse(textBox1_结果显示.Text);
@@ -242,7 +246,7 @@ namespace Calculator
             }
         }
 
-        private void btn_memory_Click(object sender,EventArgs e)
+        private void btn_memory_Click(object sender, EventArgs e)
         {
             string function = (sender as Button).Tag.ToString();
             if (textBox1_结果显示.Text != "")
@@ -266,7 +270,7 @@ namespace Calculator
 
         private void listBox1_记忆_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(listBox1_记忆.SelectedIndex != -1)
+            if (listBox1_记忆.SelectedIndex != -1)
             {
                 memory m2 = new memory("", 0);
                 m2 = (memory)listBox1_记忆.SelectedItem;
@@ -292,6 +296,39 @@ namespace Calculator
             binaryConvert f3 = new binaryConvert();
             f3.ShowDialog();
             this.Enabled = true;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            listBox1.Items.Add("THB -> USD");
+            listBox1.Items.Add("USD -> THB");
+        }
+
+        private void Convert_btn_Click(object sender, EventArgs e)
+        {
+            if (textBox1_结果显示.Text != "")
+            {
+                double var = double.Parse(textBox1_结果显示.Text);
+
+
+                if (listBox1.SelectedIndex != -1)
+                {
+                    if (listBox1.SelectedIndex == 0)
+                    {
+                        var /= 30.3;
+                        textBox1_结果显示.Text = var.ToString();
+                        textBox2_步骤显示.Text += "$";
+                    }
+                    else
+                    {
+                        var *= 30.3;
+                        textBox1_结果显示.Text = var.ToString();
+                        textBox2_步骤显示.Text += "B";
+                    }
+                }
+                isCalculated = true;
+
+            }
         }
     }
 

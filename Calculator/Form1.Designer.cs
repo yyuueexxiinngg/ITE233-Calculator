@@ -35,6 +35,7 @@
             this.btn_CE = new System.Windows.Forms.Button();
             this.btn_c = new System.Windows.Forms.Button();
             this.groupBox1_basic = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_mm = new System.Windows.Forms.Button();
             this.btn_mp = new System.Windows.Forms.Button();
             this.btn_mc = new System.Windows.Forms.Button();
@@ -70,6 +71,8 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.explainationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.binaryConvertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Convert_btn = new System.Windows.Forms.Button();
             this.groupBox1_basic.SuspendLayout();
             this.groupBox1_function.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -149,6 +152,7 @@
             // groupBox1_basic
             // 
             this.groupBox1_basic.AutoSize = true;
+            this.groupBox1_basic.Controls.Add(this.button1);
             this.groupBox1_basic.Controls.Add(this.btn_mm);
             this.groupBox1_basic.Controls.Add(this.btn_mp);
             this.groupBox1_basic.Controls.Add(this.btn_mc);
@@ -180,10 +184,22 @@
             this.groupBox1_basic.TabStop = false;
             this.groupBox1_basic.Text = "Basic";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("宋体", 20F);
+            this.button1.Location = new System.Drawing.Point(483, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 85);
+            this.button1.TabIndex = 29;
+            this.button1.Tag = "@";
+            this.button1.Text = "%";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Symbol_Btn_Click);
+            // 
             // btn_mm
             // 
             this.btn_mm.Font = new System.Drawing.Font("宋体", 20F);
-            this.btn_mm.Location = new System.Drawing.Point(483, 418);
+            this.btn_mm.Location = new System.Drawing.Point(483, 474);
             this.btn_mm.Name = "btn_mm";
             this.btn_mm.Size = new System.Drawing.Size(85, 111);
             this.btn_mm.TabIndex = 28;
@@ -195,7 +211,7 @@
             // btn_mp
             // 
             this.btn_mp.Font = new System.Drawing.Font("宋体", 20F);
-            this.btn_mp.Location = new System.Drawing.Point(483, 254);
+            this.btn_mp.Location = new System.Drawing.Point(483, 311);
             this.btn_mp.Name = "btn_mp";
             this.btn_mp.Size = new System.Drawing.Size(85, 111);
             this.btn_mp.TabIndex = 27;
@@ -207,7 +223,7 @@
             // btn_mc
             // 
             this.btn_mc.Font = new System.Drawing.Font("宋体", 20F);
-            this.btn_mc.Location = new System.Drawing.Point(483, 95);
+            this.btn_mc.Location = new System.Drawing.Point(483, 147);
             this.btn_mc.Name = "btn_mc";
             this.btn_mc.Size = new System.Drawing.Size(85, 111);
             this.btn_mc.TabIndex = 26;
@@ -501,9 +517,9 @@
             // 
             this.listBox1_记忆.FormattingEnabled = true;
             this.listBox1_记忆.ItemHeight = 12;
-            this.listBox1_记忆.Location = new System.Drawing.Point(685, 155);
+            this.listBox1_记忆.Location = new System.Drawing.Point(685, 335);
             this.listBox1_记忆.Name = "listBox1_记忆";
-            this.listBox1_记忆.Size = new System.Drawing.Size(243, 796);
+            this.listBox1_记忆.Size = new System.Drawing.Size(243, 616);
             this.listBox1_记忆.TabIndex = 7;
             this.listBox1_记忆.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_记忆_MouseDoubleClick);
             // 
@@ -572,11 +588,34 @@
             this.binaryConvertToolStripMenuItem.Text = "Binary Convert";
             this.binaryConvertToolStripMenuItem.Click += new System.EventHandler(this.binaryConvertToolStripMenuItem_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("宋体", 20F);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 27;
+            this.listBox1.Location = new System.Drawing.Point(685, 149);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(243, 58);
+            this.listBox1.TabIndex = 11;
+            // 
+            // Convert_btn
+            // 
+            this.Convert_btn.Font = new System.Drawing.Font("宋体", 15F);
+            this.Convert_btn.Location = new System.Drawing.Point(731, 255);
+            this.Convert_btn.Name = "Convert_btn";
+            this.Convert_btn.Size = new System.Drawing.Size(152, 55);
+            this.Convert_btn.TabIndex = 13;
+            this.Convert_btn.Text = "Convert";
+            this.Convert_btn.UseVisualStyleBackColor = true;
+            this.Convert_btn.Click += new System.EventHandler(this.Convert_btn_Click);
+            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 927);
+            this.Controls.Add(this.Convert_btn);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox3_记忆显示);
             this.Controls.Add(this.listBox1_记忆);
@@ -587,6 +626,7 @@
             this.MinimumSize = new System.Drawing.Size(16, 50);
             this.Name = "Calculator";
             this.Text = "Calculator";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1_basic.ResumeLayout(false);
             this.groupBox1_function.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -642,6 +682,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem explainationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem binaryConvertToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button Convert_btn;
     }
 }
 
